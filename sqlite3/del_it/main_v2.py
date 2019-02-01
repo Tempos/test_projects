@@ -1,4 +1,4 @@
-from db_class_v2 import ConnectDB
+from del_it.db_class_v2 import ConnectDB
 from db_schema import *
 from queries import *
 from test_data import *
