@@ -1,14 +1,13 @@
-"""Insertion data for tables"""
+"""Queries for tables"""
 
-# devices (<id>, name, lab)
-STATIONS = ("INSERT INTO devices(name, lab) VALUES(?, ?)",
-            [('some_name', 'some_lab'),
-             ('another_name', 'another_lab'),
-             ('one_more_name', 'one_more_lab')])
+STATIONS = "INSERT INTO devices(name, lab) VALUES(?, ?)"
 
-# interfaces (<device_id>, name, number, speed, status)
-INTERFACES = ("INSERT INTO interfaces(name, number, speed, status) VALUES (?, ?, ?, ?)",
-              [('WM', 1, 1000, 'up'),
-               ('BS', 2, 1000, 'up')])
+SELECT_ALL_FROM_devices = "SELECT * FROM devices"
+SELECT_ALL_FROM_interfaces = "SELECT * FROM interfaces"
 
-SELECT_ALL_DEVICES = "SELECT * FROM devices"
+INTERFACES = "INSERT INTO interfaces(name, number, speed, status) " \
+             "VALUES(?, ?, ?, ?)"
+
+INTERFACES_DELETE = "DELETE FROM interfaces WHERE name=?"
+UPDATE_interfaces = "UPDATE interfaces" \
+                    "SET name='port_name', number='port_number'"

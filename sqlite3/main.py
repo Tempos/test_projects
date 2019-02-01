@@ -1,6 +1,7 @@
 from db_class import ConnectDB
-from queries import *
 from db_schema import *
+from queries import *
+from test_data import *
 
 db = ConnectDB('test_beds.db')
 
@@ -8,15 +9,19 @@ db = ConnectDB('test_beds.db')
 db.create(DEVICE_TABLE)
 db.create(IFACE_TABLE)
 
-# Insert a row of data
-db.insert(STATIONS)
-db.insert(INTERFACES)
+# db.test()
 
-# # Save changes
-db.commit()
+# Insert a row of data
+db.insert(STATIONS, STATIONS_INSERT)
+db.insert(INTERFACES, INTERFACES_INSERT)
+
+# Delete row
+db.delete(INTERFACES_DELETE, ROW_NAME)
+
+# Update table
+db.update(UPDATE_interfaces)
 
 # read from table
-db.select(SELECT_ALL_DEVICES)
+db.select(SELECT_ALL_FROM_devices)
+db.select(SELECT_ALL_FROM_interfaces)
 
-# close connection.
-db.close()

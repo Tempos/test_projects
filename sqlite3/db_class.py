@@ -7,21 +7,52 @@ class ConnectDB:
         self.cursor = self.db.cursor()
 
     def create(self, data):
-        self.cursor.execute(data)
+        with self.db:
+            try:
+                self.cursor.execute(data)
+                self.commit()
+            except sqlite3.Error as e:
+                print(f"{e.args[0]} occurred.")
 
-    def insert(self, data):
-        query, items = data
-        try:
-            self.cursor.executemany(query, items)
-        except sqlite3.IntegrityError:
-            print('Data already exists there.')
+    def insert(self, query, data):
+        with self.db:
+            try:
+                self.cursor.executemany(query, data)
+                self.commit()
+            except sqlite3.IntegrityError:
+                print('\nData already exists there.')
+
+    def test(self, query):
+        select = self.cursor.execute(query)
+        for description in select.description:
+            print(description)
 
     def select(self, query):
-        for row in self.cursor.execute(query):
-            print(row)
+        with self.db:
+            try:
+                select = self.cursor.execute(query)
+                print()
+                for row in select:
+                    print(row)
+            except sqlite3.OperationalError as oe:
+                print(f"\nError occurred - {oe.args[0]}")
+            finally:
+                return select
+
+    def update(self, data):
+        with self.db:
+            try:
+                self.cursor.executescript(data)
+            except sqlite3.OperationalError as oe:
+                print(f"\nError occurred - {oe.args[0]}")
+
+    def delete(self, query, data):
+        with self.db:
+            try:
+                self.cursor.execute(query, data)
+                self.commit()
+            except sqlite3.OperationalError as oe:
+                print(f"\nError occurred - {oe.args[0]}")
 
     def commit(self):
         self.db.commit()
-
-    def close(self):
-        self.db.close()
