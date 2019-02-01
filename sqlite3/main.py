@@ -1,7 +1,6 @@
 from db_class import ConnectDB
 from db_schema import *
 from queries import *
-# from test_data import *
 
 db = ConnectDB('test_beds.db')
 
@@ -26,7 +25,7 @@ db.delete(INTERFACES_DELETE)
 # read from table
 db.select(SELECT_ALL_FROM_interfaces)
 
-print('='*20)
+print('='*30)
 
 db.select(SELECT_W_CONDITION)
 db.select(JOIN)

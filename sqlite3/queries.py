@@ -13,13 +13,13 @@ INTERFACES = ('''INSERT INTO interfaces(device_id, name, number, speed, status)
               [(1, 'ether', 1, 1000, 'up'),
                (1, 'ether', 2, 1000, 'down'),
                (3, 'ether', 2, 1000, 'down'),
-               (3, 'WM', 2, 10, 'down'),
-               (3, 'WM', 2, 10, 'down'),
-               (3, 'WM', 2, 10, 'down'),
+               (3, 'WM',    2, 10,   'down'),
+               (3, 'WM',    2, 10,   'down'),
+               (3, 'WM',    2, 10,   'down'),
                (3, 'ether', 2, 1000, 'down'),
                (3, 'ether', 2, 1000, 'down'),
-               (3, 'BS', 2, 1000, 'down'),
-               (2, 'ether', 1, 100, 'up')])
+               (3, 'BS',    2, 1000, 'down'),
+               (2, 'ether', 1, 100,  'up')])
 
 INTERFACES_DELETE = ("DELETE FROM interfaces WHERE name=?",
                      ["BS"])

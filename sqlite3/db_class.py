@@ -20,7 +20,7 @@ class ConnectDB:
                 self.cursor.executemany(*query)
                 self.commit()
             except sqlite3.IntegrityError:
-                print('\nData already exists there.')
+                pass  # print('\nData already exists there.')
 
     def test(self, query):
         select = self.cursor.execute(query)
