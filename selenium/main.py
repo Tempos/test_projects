@@ -1,4 +1,5 @@
 from selenium import webdriver
+
 from constants import *
 
 chrome_options = webdriver.ChromeOptions()
@@ -48,6 +49,7 @@ def gather_data():
     link = driver.current_url
 
     print(f'{name}\n{numbers}\n{address}\n{price}\n{info}\n{link}')
+
 
 gather_data()
 
