@@ -38,7 +38,7 @@ PROFILE_DESCRIPTION = '//*[@class="md_modal_iconed_section_wrap md_modal_iconed_
 RIA_PATH = """https://auto.ria.com/search/
 ?body.id[0]=3
 &categories.main.id=1
-&price.USD.gte=200000
+&price.USD.gte=500000
 &price.currency=1
 &abroad.not=0
 &custom.not=1
